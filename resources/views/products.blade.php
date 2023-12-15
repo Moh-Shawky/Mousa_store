@@ -75,7 +75,6 @@
                                 @foreach ($products as $product)
                                     <div class="col-md-4">
                                         <div class="product-item">
-
                                             <img width="150" height="260" src="{{ $product->image ? asset('storage/' . $product->image) : asset('assets/images/Mansa Musa.jpeg') }}"
                                                 alt="">
                                             <div class="down-content">

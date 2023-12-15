@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\ProductController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Models\Product;
-use App\Repositories\ProductRepository;
+use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Route;
+use App\Repositories\ProductRepository;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('products', ProductRepository::class);
 Route::resource('user', UserRepository::class);
+
+
+
+// third party API using Fake store API
+Route::get('fakeapi',[ProductAPIController::class,'index']);
+Route::get('fakeapi/{id}',[ProductAPIController::class,'show']);
+Route::get('fakeapi/category/{category}',[ProductAPIController::class,'getProductsByCategory']);
+Route::post('fakeapi',[ProductAPIController::class,'store']);
+Route::put('fakeapi/{id}',[ProductAPIController::class,'update']);
+Route::delete('fakeapi/{id}',[ProductAPIController::class,'delete']);
+
+
+
+
